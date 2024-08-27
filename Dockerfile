@@ -23,7 +23,7 @@ RUN pip install --upgrade pip && \
 # Copy the rest of the application code
 COPY ./strangerchatbot /strangerchatbot
 
-# Ensure the wait-for-it script is executable and included
+# Ensure the wait-for-it script is included and executable
 COPY ./wait-for-it.sh /usr/local/bin/wait-for-it.sh
 RUN chmod +x /usr/local/bin/wait-for-it.sh
 
