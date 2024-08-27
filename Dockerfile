@@ -14,17 +14,17 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Copy only the requirements file first for better cache usage
-COPY ./strangerchatbot/requirements.txt /strangerchatbot/
+COPY strangerchatbot/requirements.txt /strangerchatbot/
 
 # Install Python dependencies
 RUN pip install --upgrade pip && \
     pip install -r requirements.txt
 
 # Copy the rest of the application code
-COPY ./strangerchatbot /strangerchatbot
+COPY strangerchatbot /strangerchatbot
 
 # Ensure the wait-for-it script is included and executable
-COPY ./wait-for-it.sh /usr/local/bin/wait-for-it.sh
+COPY strangerchatbot/wait-for-it.sh /usr/local/bin/wait-for-it.sh
 RUN chmod +x /usr/local/bin/wait-for-it.sh
 
 # Define the default command
