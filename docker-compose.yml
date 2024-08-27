@@ -1,32 +1,24 @@
 version: '3'
-
 services:
   postgres:
     image: postgres:12-alpine
+    environment:
+      POSTGRES_DB: botDb
+      POSTGRES_PASSWORD: admin
+      POSTGRES_USER: admin
+    ports:
+      - 5432:5432
     volumes:
       - postgres_data:/var/lib/postgresql/data/
       - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
-    environment:
-      POSTGRES_USER: admin
-      POSTGRES_DB: botDb
-      POSTGRES_PASSWORD: admin
-    ports:
-      - "5432:5432"
-
   bot:
     build: .
     depends_on:
       - postgres
+    environment: {}
+    ports:
+      - 8000:8000
     volumes:
       - ./strangerchatbot:/strangerchatbot
-    environment:
-      # Add any environment variables needed for the bot service
-      # For example:
-      # ENV_VAR_NAME: value
-    ports:
-      # Map any ports if your bot service exposes any
-      # Example:
-      # - "8000:8000"
-
 volumes:
   postgres_data:
