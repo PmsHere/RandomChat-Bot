@@ -21,9 +21,12 @@ services:
       - ./strangerchatbot:/strangerchatbot
     environment:
       # Add any environment variables needed for the bot service
+      # For example:
+      # ENV_VAR_NAME: value
     ports:
       # Map any ports if your bot service exposes any
-      # - "8000:8000"  # Example if your bot runs on port 8000
+      # Example:
+      # - "8000:8000"
 
 volumes:
   postgres_data:
